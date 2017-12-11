@@ -1,4 +1,4 @@
-from .app import db
+from app import db
 
 
 class WeatherSnapshot(db.Model):
@@ -6,7 +6,7 @@ class WeatherSnapshot(db.Model):
     Represent a snapshot of a weather stats for a specific time
     and place.
     """
-    __tablename__ = 'weather_entries'
+    __tablename__ = 'weather_snapshots'
 
     id = db.Column(db.Integer, primary_key=True)
     temperature = db.Column(db.Integer())
