@@ -1,4 +1,4 @@
-import flask
+import json
 from flask import render_template, Blueprint, redirect, request, flash, url_for
 from flask_login import login_user, logout_user, login_required
 
@@ -6,6 +6,7 @@ from app import app, db
 # from models import User
 import models
 import forms
+from servises import WeatherService
 
 
 views_bp = Blueprint('views_bp', __name__)
@@ -15,6 +16,16 @@ views_bp = Blueprint('views_bp', __name__)
 @login_required
 def index():
     return render_template('index.html')
+
+
+@app.route('/temperature-between-dates')
+def get_temperature_between_dates():
+    start = request.args.get('start')
+    end = request.args.get('end')
+
+    weather = WeatherService()
+    data = weather.get_avg_temp_between_dates(start, end)
+    return json.dumps(data)
 
 
 @app.route('/login', methods=['GET', 'POST'])
