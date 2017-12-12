@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>humid.io</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/app.css') }}" >
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
 </head>
 <body>
-    <h2>Hello World</h2>
+    <div class="container">
+        <div class="brand">
+            <h2 class="brand-title">humud.io</h2>
+{#            <h4 class="brand-tagline"></h4>#}
+        </div>
+
+        <div>Look at this graphs</div>
+        <div class="controls"></div>
+        <div class="graph"></div>
+    </div>
 </body>
 </html>
