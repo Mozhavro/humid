@@ -7,6 +7,11 @@ body {
     margin: auto;
 }
 
+.header {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 40px;
+}
+
 .footer {
     margin-top: 200px;
 }
@@ -40,4 +45,9 @@ body {
     padding: 10px;
     border: 1px solid #cccccc;
     background: #f3f3f3;
+}
+
+.controls {
+    float: right;
+    text-align: right;
 }
