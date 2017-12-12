@@ -6,3 +6,38 @@ body {
     max-width: 800px;
     margin: auto;
 }
+
+.footer {
+    margin-top: 200px;
+}
+
+.footer-links {
+    text-align: right;
+}
+
+.footer-links a {
+    color: #555;
+    font-size: 14px;
+}
+
+.form label {
+    display: block;
+    font-size: 13px;
+}
+
+.auth-form {
+    width: 300px;
+    margin: 100px auto 0;
+}
+
+.flashes {
+    background: #000;
+    list-style: none;
+}
+
+.flashes li {
+    display: block;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    background: #f3f3f3;
+}
