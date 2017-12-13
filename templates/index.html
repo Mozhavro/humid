@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 
+{% block head %}
+    <script src="{{ url_for('static', filename = 'js/lib/chart.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'js/app.js') }}"></script>
+{% endblock %}
+
 {% block content %}
 
     <div class="header">
         <div class="brand">
             <h2 class="brand-title">humud.io</h2>
-            {#            <h4 class="brand-tagline"></h4>#}
         </div>
     </div>
     <p>
@@ -34,7 +38,10 @@
         <input type="text" name="year">
         <a href="#" class="btn" id></a>
     </div>
-    <div class="graph"></div>
+    <div class="graph">
+{#        <svg id="graph" width="100%" height="400px"></svg>#}
+        <canvas id="graph" width="800" height="400"></canvas>
+    </div>
 
     <div class="footer">
         <div class="footer-links">

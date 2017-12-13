@@ -13,7 +13,7 @@ body {
 }
 
 .footer {
-    margin-top: 200px;
+    margin-top: 80px;
 }
 
 .footer-links {
@@ -50,4 +50,8 @@ body {
 .controls {
     float: right;
     text-align: right;
+}
+
+.graph {
+    margin: 40px 0 0;
 }
