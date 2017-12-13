@@ -13,30 +13,18 @@
         </div>
     </div>
     <p>
-        Hello, {{ current_user.username }}! Here you can view the temperature in London for some time period. You can filter results by date (month and year).
+        Hello, {{ current_user.username }}! Here you can view the temperature in London for some time period. You can filter results by month.
     </p>
 
     Look at this graph!
     <div class="controls">
         month:
         <select name="month" id="month">
-            <option value="01">Jan</option>
-            <option value="02">Feb</option>
-            <option value="03">Mar</option>
-            <option value="04">Apr</option>
-            <option value="05">May</option>
-            <option value="06">Jun</option>
-            <option value="07">Jul</option>
-            <option value="08">Aug</option>
-            <option value="09">Sep</option>
-            <option value="10">Oct</option>
-            <option value="11">Nov</option>
-            <option value="12">Dec</option>
+            <option value="Sep 2017">Sep 2017</option>
+            <option value="Oct 2017">Oct 2017</option>
+            <option value="Nov 2017">Nov 2017</option>
         </select>
-        
-        year:
-        <input type="text" name="year">
-        <a href="#" class="btn" id></a>
+
     </div>
     <div class="graph">
 {#        <svg id="graph" width="100%" height="400px"></svg>#}
