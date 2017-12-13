@@ -2,11 +2,12 @@ import json
 from flask import render_template, Blueprint, redirect, request, flash, url_for
 from flask_login import login_user, logout_user, login_required
 
+# TODO use current_app
 from app import app, db
 # from models import User
 import models
 import forms
-from servises import WeatherService
+from services import WeatherService
 
 
 views_bp = Blueprint('views_bp', __name__)
