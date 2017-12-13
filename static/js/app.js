@@ -2,8 +2,6 @@
 (function( $ ) {
 
     $(window).on('load', function(){
-
-
         // Initial data
         var d = new Date();
         var current_month = d.getMonth();
@@ -20,25 +18,43 @@
         var startDay = new Date(year, past_month, 1);
         var endDay = new Date(year, past_month + 1, 0);
 
-        $.ajax({
-            url: "/temperature-between-dates",
-            type: 'GET',
-            data: {
-                start: startDay.getTime()/1000,
-                end: endDay.getTime()/1000
-            },
+        updateGraphForPeriod(startDay, endDay);
 
-            success: function (resp) {
-                var data = JSON.parse(resp);
-                updateChart("graph", data);
-            }
+        $('#month').on('change', function () {
+            var selected = $(this).val();
+
+            var d = new Date(selected),
+                month = d.getMonth(),
+                year = d.getFullYear();
+
+            var startDay = new Date(year, month, 1);
+            var endDay = new Date(year, month+1, 0, 0);
+
+            updateGraphForPeriod(startDay, endDay);
         });
     });
 
 })( jQuery );
 
 
-function updateChart(id, data, label, color) {
+function updateGraphForPeriod(startDate, endDate) {
+    $.ajax({
+        url: "/temperature-between-dates",
+        type: 'GET',
+        data: {
+            start: startDate.getTime()/1000,
+            end: endDate.getTime()/1000
+        },
+
+        success: function (resp) {
+            var data = JSON.parse(resp);
+            updateGraph("graph", data);
+        }
+    });
+}
+
+
+function updateGraph(id, data, label, color) {
     if(label === undefined)
         label = "Temperature";
 
