@@ -31,13 +31,9 @@
             success: function (resp) {
                 var data = JSON.parse(resp);
                 var data_arr = Object.keys( data ).map(function ( key ) { return data[key]; });
-                console.log(data);
-
-                // var t_scale_min = Math.min.apply(Math, data_arr) -2;
-                // var t_scale_max = Math.max.apply(Math, data_arr) +2;
 
                 var dates = [];
-                Object.keys(data).map(function(key, index) {
+                Object.keys(data).sort().map(function(key, index) {
                     var date = new Date(key*1000);
                     var curr_date = date.getDate();
                     var curr_month = date.getMonth() + 1;
