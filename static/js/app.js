@@ -32,7 +32,24 @@
 
             updateGraphForPeriod(startDay, endDay);
         });
+
+        $(".month-controls .switcher").on('click', function (e) {
+            e.preventDefault();
+
+            var container = $(this).closest(".month-controls");
+            var select = container.find("#month");
+            var options_available = $("#month option").length
+            var shift = parseInt($(this).attr("data-shift"));
+            var selected_index = select.prop('selectedIndex');
+
+            var next_index = (selected_index + shift);
+            if(next_index < options_available && next_index >= 0) {
+                $("#month option").eq(next_index).prop('selected', true).trigger('change');;
+            }
+        });
     });
+
+
 
 })( jQuery );
 
@@ -59,7 +76,7 @@ function updateGraph(id, data, label, color) {
         label = "Temperature";
 
     if(color === undefined)
-        color = "#3e95cd";
+        color = "black";
 
     var data_arr = Object.keys( data ).map(function ( key ) { return data[key]; });
 
@@ -79,7 +96,7 @@ function updateGraph(id, data, label, color) {
         datasets: [{
             data: data_arr,
             label: "Temperature",
-            borderColor: "#3e95cd",
+            borderColor: color,
             fill: false
           },
         ]

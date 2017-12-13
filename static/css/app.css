@@ -52,6 +52,34 @@ body {
     text-align: right;
 }
 
+.month-controls {
+    background: #e6e6e6;
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.61);
+    -moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.61);
+    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.61);
+    border: 3px solid #151515;
+}
+
+select#month {
+    background: transparent;
+    font-size: 14px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 0;
+}
+
+.switcher {
+    display: inline-block;
+    width: 24px;
+    /*height: 24px;*/
+    text-align: center;
+    text-decoration: none;
+    background: #151515;
+    color: white;
+    padding: 4px;
+    font-weight: bold;
+}
+
 .graph {
     margin: 40px 0 0;
 }
