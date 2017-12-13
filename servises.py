@@ -16,12 +16,16 @@ class WeatherService:
 
         data = {}
         date = start_date
-        for day in range(delta.days):
+        print(start_date)
+        print(end_date)
+        print(delta.days)
+        for day in range(delta.days +1):
+            print(date)
             timestamp = time.mktime(date.timetuple())
             temperature = self.get_avg_temp_for_day(timestamp)
             data[timestamp] = temperature
-            date = date + datetime.timedelta(days=1)
-
+            date = date + datetime.timedelta(hours=24)
+        print(data)
         return data
 
     def get_avg_temp_for_day(self, timestamp):
