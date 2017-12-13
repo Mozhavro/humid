@@ -30,33 +30,43 @@
 
             success: function (resp) {
                 var data = JSON.parse(resp);
-                var data_arr = Object.keys( data ).map(function ( key ) { return data[key]; });
-
-                var dates = [];
-                Object.keys(data).sort().map(function(key, index) {
-                    var date = new Date(key*1000);
-                    var curr_date = date.getDate();
-                    var curr_month = date.getMonth() + 1;
-                    var curr_year = date.getFullYear();
-                    dates.push(curr_date + "." + curr_month + "." + curr_year);
-                });
-                console.log(dates);
-
-                new Chart(document.getElementById("graph"), {
-                  type: 'line',
-                  data: {
-                    labels: dates,
-                    datasets: [{
-                        data: data_arr,
-                        label: "Temperature",
-                        borderColor: "#3e95cd",
-                        fill: false
-                      },
-                    ]
-                  },
-                });
+                updateChart("graph", data);
             }
         });
     });
 
 })( jQuery );
+
+
+function updateChart(id, data, label, color) {
+    if(label === undefined)
+        label = "Temperature";
+
+    if(color === undefined)
+        color = "#3e95cd";
+
+    var data_arr = Object.keys( data ).map(function ( key ) { return data[key]; });
+
+    var dates = [];
+    Object.keys(data).sort().map(function(key, index) {
+        var date = new Date(key*1000);
+        var curr_date = date.getDate();
+        var curr_month = date.getMonth() + 1;
+        var curr_year = date.getFullYear();
+        dates.push(curr_date + "." + curr_month + "." + curr_year);
+    });
+
+    new Chart(document.getElementById(id), {
+      type: 'line',
+      data: {
+        labels: dates,
+        datasets: [{
+            data: data_arr,
+            label: "Temperature",
+            borderColor: "#3e95cd",
+            fill: false
+          },
+        ]
+      },
+    });
+}
