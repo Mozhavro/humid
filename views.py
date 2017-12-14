@@ -1,24 +1,23 @@
 import json
-from flask import render_template, Blueprint, redirect, request, flash, url_for
+from flask import render_template, Blueprint, redirect, request, flash, url_for, current_app
 from flask_login import login_user, logout_user, login_required
 
-# TODO use current_app
-from app import app, db
 import models
 import forms
 from services import WeatherService
 
 
-views_bp = Blueprint('views_bp', __name__)
+site = Blueprint('site', __name__)
+auth = Blueprint('auth', __name__)
 
 
-@app.route('/')
+@site.route('/')
 @login_required
 def index():
     return render_template('index.html')
 
 
-@app.route('/temperature-between-dates')
+@site.route('/temperature-between-dates')
 def get_temperature_between_dates():
     start = request.args.get('start')
     end = request.args.get('end')
@@ -28,7 +27,7 @@ def get_temperature_between_dates():
     return json.dumps(data)
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@auth.route('/login', methods=['GET', 'POST'])
 def login():
     form = forms.LoginForm()
     if form.validate_on_submit():
@@ -42,21 +41,22 @@ def login():
     return render_template('auth/login.html', form=form)
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@auth.route('/register', methods=['GET', 'POST'])
 def register():
     form = forms.RegistrationForm()
     if form.validate_on_submit():
         user = models.User(email=form.email.data,
                             username=form.username.data,
                             password=form.password.data)
-        db.session.add(user)
-        db.session.commit()
+        current_app.db.session.add(user)
+        current_app.db.session.commit()
         flash('You can now login.')
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
+
     return render_template('auth/register.html', form=form)
 
 
-@app.route("/logout")
+@auth.route("/logout")
 @login_required
 def logout():
     logout_user()
