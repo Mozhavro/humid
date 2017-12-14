@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>humid.io</title>
+    <title>{% block title %}humid.io{% endblock %}</title>
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/app.css') }}" >
     <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
@@ -14,20 +14,18 @@
 <body>
     <div class="container">
 
-        {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            <ul class=flashes>
-            {% for message in messages %}
-              <li>{{ message }}</li>
-            {% endfor %}
-            </ul>
-          {% endif %}
-        {% endwith %}
+        {% include "header.html" %}
+
+        {% include "notifications.html" %}
 
         {% block content %}
         {% endblock %}
 
+
+        {% include "footer.html" %}
+
     </div>
+
 
     {% block body_bottom %}
     {% endblock %}

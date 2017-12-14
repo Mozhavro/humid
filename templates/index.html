@@ -7,11 +7,6 @@
 
 {% block content %}
 
-    <div class="header">
-        <div class="brand">
-            <h2 class="brand-title">humid.io</h2>
-        </div>
-    </div>
     <p>
         Hello, {{ current_user.username }}! Here you can view the temperature in London for some time period. You can filter results by month.
     </p>
@@ -34,9 +29,4 @@
         <canvas id="graph" width="800" height="400"></canvas>
     </div>
 
-    <div class="footer">
-        <div class="footer-links">
-            <a href="/logout">sign out</a>
-        </div>
-    </div>
 {% endblock %}
