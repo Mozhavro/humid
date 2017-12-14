@@ -19,7 +19,7 @@ def create_app(conf_path="./config.py"):
     # Register views
     from views import site, auth
     app.register_blueprint(site)
-    app.register_blueprint(auth)
+    app.register_blueprint(auth, url_prefix='/auth')
 
     # Add auth provider
     login_manager = LoginManager()
